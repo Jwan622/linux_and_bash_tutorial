@@ -61,3 +61,83 @@ This is easier than typing the full name of the user's home directory as an argu
 
 
 Takeaway for me: / and ~ are two different directories. / is the root directory.
+
+
+
+**The touch Command**
+
+The touch command is the easiest way to create new, empty files. Its syntax is
+
+touch [option] file_name(s)
+
+No options are required for basic file creation. Thus, for example, to create a new file named file1 within the current directory (i.e., the directory in which the user is currently working), all that is necessary is to type the following command and then press the ENTER key:
+```
+touch file1
+```
+
+
+**The rm command**
+
+And the following would remove everything in the directory dir1:
+```
+rm dir1/*
+```
+
+As another illustration of the great versatility that wildcards add to the command line, the following would delete all files in the current directory that have a file name extension of .html but would leave all others intact:
+```
+rm *.html
+```
+
+
+As a safety measure, rm does not delete directories by default. This is important because once deleted, it is extremely difficult or impossible to recover deleted data on Unix-like operating systems (in contrast to the Microsoft Windows operating systems). In order to delete directories, it is necessary to use the -r option or the -R option (they are the same). This option recursively removes directories, along with all of their contents, that are included in the argument list; that is, the specified directories will first be emptied of any subdirectories (including their subdirectories and files, etc.) and files and then removed.
+
+
+**The cp Command**
+
+The cp command is used to copy files and directories. The copies become independent of the originals (i.e., a subsequent change in one will not affect the other).
+
+cp's basic syntax is
+```
+cp [options] name new_name
+```
+If a file with the same name as that assigned to the copy of a file (or a directory with the same name as that assigned to the copy of a directory) already exists, it will be overwritten. By default, cp only copies files and not directories.
+
+When a copy is made of a file or directory, the copy must have a different name than the original if it is to be placed in the same directory as the original. However, the copy can have the same name if it is made in a different directory. Thus, for example, a file named file4 which resides in the current directory could be copied with the same name into another directory, such as into /home/john/, as follows:
+
+cp file4 /home/john/file4
+
+
+
+Any number of files can be simultaneously copied into another directory by listing their names followed by the name of the directory. cp is an intelligent command and knows to do this when only the final argument is a directory. The files copied into the directory will all have the same names as the originals. Thus, for example, the following would copy the files named file5, file6 and file7 into a directory named dir6:
+```
+cp file5 file6 file7 dir6
+```
+
+
+cp's -r option, which can also be written with an upper case -R, allows directories including all of their contents to be copied. Thus, for example, the following command would make a copy of an existing directory called dir7, inclusive of all it contents (i.e., files, subdirectories, their subdirectories, etc.), called dir8:
+```
+cp -r dir7 dir8
+```
+
+
+
+**The mv Command**
+
+The mv command is used to rename and move files and directories. Its basic syntax is:
+```
+mv [options] source target
+```
+If the target file or directory is located in the same directory as the source file or directory, then the source file or directory can only be renamed. If both are in different directories, then the source file or directory is moved to a new directory, in which it can keep its original name or be assigned a new name.
+
+Thus, for example, to rename a file called file8 to file9, both in the current directory, the following would be used:
+```bash
+mv file8 file9
+```
+The following would move a file named file10, without changing its name, from the current directory to an existing subdirectory of the current directory named dir9:
+```
+mv file10 dir9/file10
+```
+Detailed information (including all options) about mv as well as all of the other commands discussed above can be obtained by using their **--help option**. Thus, for example, to obtain more information about the mv command, the following would be used:
+```
+mv --help
+```
